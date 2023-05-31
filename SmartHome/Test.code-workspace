@@ -1,0 +1,21 @@
+{
+  "folders": [
+	{
+		"path": "../Test"
+	},
+	{
+		"name": "Blink",
+		"path": "../Test/Blink"
+	},
+	{
+		"name": "SmartHome",
+		"path": "."
+	}
+],
+  "settings": {
+    "files.associations": {
+      "ostream": "cpp",
+      "*.tcc": "cpp"
+    }
+  }
+}
