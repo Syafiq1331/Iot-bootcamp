@@ -40,9 +40,25 @@ void sendSensor() {
   Blynk.virtualWrite(V0, sonar.ping_cm());
 }
 
+// #define Pompa D4
+int SW_State = 0;
+
+BLYNK_WRITE(V1) {
+  SW_State = param.asInt();
+  if (SW_State == 1) {
+    digitalWrite(LED_BUILTIN, HIGH);
+    Serial.println("Pompa HIDUP");
+    Blynk.virtualWrite(V1, HIGH);
+  } else {
+    digitalWrite(LED_BUILTIN, LOW);
+    Serial.println("Pompa MATI");
+    Blynk.virtualWrite(V1, LOW);
+  }
+}
+
 void setup() {
   Serial.begin(9600);
-
+  pinMode(LED_BUILTIN, OUTPUT);
   Blynk.begin(BLYNK_AUTH_TOKEN, ssid, pass);
 
   timer.setInterval(1000L, sendSensor);
